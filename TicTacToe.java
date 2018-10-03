@@ -3,20 +3,26 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.geom.*;
+import java.util.Arrays;
 
 public class TicTacToe extends JFrame {
     //0 - not selected, 1 - x, 2 - o
-    int tlState = 0;
-    int tmState = 0;
-    int trState = 0;
-    int clState = 0;
-    int cmState = 0;
-    int crState = 0;
-    int blState = 0;
-    int bmState = 0;
-    int brState = 0;
+    int[] states = new int[9];
 
     int currentPlayer = 1;
+
+    //creating buttons
+    JButton tl = new JButton("");
+    JButton tm = new JButton("");
+    JButton tr = new JButton("");
+    JButton cl = new JButton("");
+    JButton cm = new JButton("");
+    JButton cr = new JButton("");
+    JButton bl = new JButton("");
+    JButton bm = new JButton("");
+    JButton br = new JButton("");
+
+    JButton win = new JButton("");
 
     public TicTacToe() {
         super();
@@ -30,18 +36,7 @@ public class TicTacToe extends JFrame {
 
         panel.setLayout(null);
 
-        //creating buttons
-        JButton tl = new JButton("");
-        JButton tm = new JButton("");
-        JButton tr = new JButton("");
-        JButton cl = new JButton("");
-        JButton cm = new JButton("");
-        JButton cr = new JButton("");
-        JButton bl = new JButton("");
-        JButton bm = new JButton("");
-        JButton br = new JButton("");
-
-        JButton win = new JButton("");
+        Arrays.fill(states, 0);
 
         //adding buttons to panel
         panel.add(tl);
@@ -87,255 +82,123 @@ public class TicTacToe extends JFrame {
 
         tl.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                    if (tlState == 0) {
-                        if (currentPlayer == 1) {
-                            tl.setText("X");
-                            tlState = 1;
-                            currentPlayer = 2;
-                            win.setText("Player two's turn");
-                        } else if (currentPlayer == 2) {
-                            tl.setText("O");
-                            tlState = 2;
-                            currentPlayer = 1;
-                            win.setText("Player one's turn");
-                        }
-                        if (winCheck() == 1) {
-                            win.setText("Player one wins");
-                        } else if (winCheck() == 2) {
-                            win.setText("Player two wins");
-                        }
-                    }
+                    onClick(0, tl);
                 }
             });
         tm.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                    if (tmState == 0) {
-                        if (currentPlayer == 1) {
-                            tm.setText("X");
-                            tmState = 1;
-                            currentPlayer = 2;
-                            win.setText("Player two's turn");
-                        } else if (currentPlayer == 2) {
-                            tm.setText("O");
-                            tmState = 2;
-                            currentPlayer = 1;
-                            win.setText("Player one's turn");
-                        }
-                        if (winCheck() == 1) {
-                            win.setText("Player one wins");
-                        } else if (winCheck() == 2) {
-                            win.setText("Player two wins");
-                        }
-                    }
+                    onClick(1, tm);
                 }
             });
         tr.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                    if (trState == 0) {
-                        if (currentPlayer == 1) {
-                            tr.setText("X");
-                            trState = 1;
-                            currentPlayer = 2;
-                            win.setText("Player two's turn");
-                        } else if (currentPlayer == 2) {
-                            tr.setText("O");
-                            trState = 2;
-                            currentPlayer = 1;
-                            win.setText("Player one's turn");
-                        }
-                        if (winCheck() == 1) {
-                            win.setText("Player one wins");
-                        } else if (winCheck() == 2) {
-                            win.setText("Player two wins");
-                        }
-                    }
+                    onClick(2, tr);
                 }
             });
         cl.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                    if (clState == 0) {
-                        if (currentPlayer == 1) {
-                            cl.setText("X");
-                            clState = 1;
-                            currentPlayer = 2;
-                            win.setText("Player two's turn");
-                        } else if (currentPlayer == 2) {
-                            cl.setText("O");
-                            clState = 2;
-                            currentPlayer = 1;
-                            win.setText("Player one's turn");
-                        }
-                        if (winCheck() == 1) {
-                            win.setText("Player one wins");
-                        } else if (winCheck() == 2) {
-                            win.setText("Player two wins");
-                        }
-                    }
+                    onClick(3, cl);
                 }
             });
         cm.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                    if (cmState == 0) {
-                        if (currentPlayer == 1) {
-                            cm.setText("X");
-                            cmState = 1;
-                            currentPlayer = 2;
-                            win.setText("Player two's turn");
-                        } else if (currentPlayer == 2) {
-                            cm.setText("O");
-                            cmState = 2;
-                            currentPlayer = 1;
-                            win.setText("Player one's turn");
-                        }
-                        if (winCheck() == 1) {
-                            win.setText("Player one wins");
-                        } else if (winCheck() == 2) {
-                            win.setText("Player two wins");
-                        }
-                    }
+                    onClick(4, cm);
                 }
             });
         cr.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                    if (crState == 0) {
-                        if (currentPlayer == 1) {
-                            cr.setText("X");
-                            crState = 1;
-                            currentPlayer = 2;
-                            win.setText("Player two's turn");
-                        } else if (currentPlayer == 2) {
-                            cr.setText("O");
-                            crState = 2;
-                            currentPlayer = 1;
-                            win.setText("Player one's turn");
-                        }
-                        if (winCheck() == 1) {
-                            win.setText("Player one wins");
-                        } else if (winCheck() == 2) {
-                            win.setText("Player two wins");
-                        }
-                    }
+                    onClick(5, cr);
                 }
             });
         bl.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                    if (blState == 0) {
-                        if (currentPlayer == 1) {
-                            bl.setText("X");
-                            blState = 1;
-                            currentPlayer = 2;
-                            win.setText("Player two's turn");
-                        } else if (currentPlayer == 2) {
-                            bl.setText("O");
-                            blState = 2;
-                            currentPlayer = 1;
-                            win.setText("Player one's turn");
-                        }
-                        if (winCheck() == 1) {
-                            win.setText("Player one wins");
-                        } else if (winCheck() == 2) {
-                            win.setText("Player two wins");
-                        }
-                    }
+                    onClick(6, bl);
                 }
             });
         bm.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                    if (bmState == 0) {
-                        if (currentPlayer == 1) {
-                            bm.setText("X");
-                            bmState = 1;
-                            currentPlayer = 2;
-                            win.setText("Player two's turn");
-                        } else if (currentPlayer == 2) {
-                            bm.setText("O");
-                            bmState = 2;
-                            currentPlayer = 1;
-                            win.setText("Player one's turn");
-                        }
-                        if (winCheck() == 1) {
-                            win.setText("Player one wins");
-                        } else if (winCheck() == 2) {
-                            win.setText("Player two wins");
-                        }
-                    }
+                    onClick(7, bm);
                 }
             });
         br.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                    if (brState == 0) {
-                        if (currentPlayer == 1) {
-                            br.setText("X");
-                            brState = 1;
-                            currentPlayer = 2;
-                            win.setText("Player two's turn");
-                        } else if (currentPlayer == 2) {
-                            br.setText("O");
-                            brState = 2;
-                            currentPlayer = 1;
-                            win.setText("Player one's turn");
-                        }
-                        if (winCheck() == 1) {
-                            win.setText("Player one wins");
-                        } else if (winCheck() == 2) {
-                            win.setText("Player two wins");
-                        }
-                    }
+                    onClick(8, br);
                 }
             });
     }
 
     public int winCheck() {
         int win = 0;
-        if (tlState == trState && tlState == tmState && tlState != 0) {
-            if (tlState == 1) {
+        if (states[0] == states[2] && states[0] == states[1] && states[0] != 0) {
+            if (states[0] == 1) {
                 win = 1;
-            } else if (tlState == 2) {
+            } else if (states[0] == 2) {
                 win = 2;
             }
-        } else if (clState == crState && clState == cmState && clState != 0) {
-            if (clState == 1) {
+        } else if (states[3] == states[5] && states[3] == states[4] && states[3] != 0) {
+            if (states[3] == 1) {
                 win = 1;
-            } else if (clState == 2) {
+            } else if (states[3] == 2) {
                 win = 2;
             }
-        } else if (blState == brState && blState == bmState && blState != 0) {
-            if (blState == 1) {
+        } else if (states[6] == states[8] && states[6] == states[7] && states[6] != 0) {
+            if (states[6] == 1) {
                 win = 1;
-            } else if (blState == 2) {
+            } else if (states[6] == 2) {
                 win = 2;
             }
-        } else if (tlState == clState && tlState == blState && tlState != 0) {
-            if (tlState == 1) {
+        } else if (states[0] == states[3] && states[0] == states[6] && states[0] != 0) {
+            if (states[0] == 1) {
                 win = 1;
-            } else if (tlState == 2) {
+            } else if (states[0] == 2) {
                 win = 2;
             }
-        } else if (trState == crState && trState == brState && trState != 0) {
-            if (trState == 1) {
+        } else if (states[2] == states[5] && states[2] == states[8] && states[2] != 0) {
+            if (states[2] == 1) {
                 win = 1;
-            } else if (trState == 2) {
+            } else if (states[2] == 2) {
                 win = 2;
             }
-        } else if (tmState == cmState && tmState == bmState && tmState != 0) {
-            if (tmState == 1) {
+        } else if (states[1] == states[4] && states[1] == states[7] && states[1] != 0) {
+            if (states[1] == 1) {
                 win = 1;
-            } else if (tmState == 2) {
+            } else if (states[1] == 2) {
                 win = 2;
             }
-        } else if (tlState == cmState && tlState == brState && tlState != 0) {
-            if (tlState == 1) {
+        } else if (states[0] == states[4] && states[0] == states[8] && states[0] != 0) {
+            if (states[0] == 1) {
                 win = 1;
-            } else if (tlState == 2) {
+            } else if (states[0] == 2) {
                 win = 2;
             }
-        } else if (trState == cmState && trState == blState && trState != 0) {
-            if (trState == 1) {
+        } else if (states[2] == states[4] && states[2] == states[6] && states[2] != 0) {
+            if (states[2] == 1) {
                 win = 1;
-            } else if (trState == 2) {
+            } else if (states[2] == 2) {
                 win = 2;
             }
         }
         return win;
+    }
+    
+    public void onClick(int index, JButton b) {
+        if (states[index] == 0) {
+            if (currentPlayer == 1) {
+                b.setText("X");
+                states[index] = 1;
+                currentPlayer = 2;
+                win.setText("Player two's turn");
+            } else if (currentPlayer == 2) {
+                b.setText("O");
+                states[index] = 2;
+                currentPlayer = 1;
+                win.setText("Player one's turn");
+            }
+            if (winCheck() == 1) {
+                win.setText("Player one wins");
+            } else if (winCheck() == 2) {
+                win.setText("Player two wins");
+            }
+        }
     }
 }
